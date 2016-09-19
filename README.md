@@ -18,6 +18,8 @@ CTRL + S = Show Password List
 
 CTRL + P = Add Password
 
+CTRL + C = Copy Selected Password ( or click password in main form)
+
 CTRL + H = Help
 
 CTRL + E = Exit
@@ -26,9 +28,15 @@ Enter = Update data (not completed Enter key)
 
 Also you can use up-down arrow in main form's listbox :)
 
-# Note
+# Note & Features
 
 Default password long = 16 (for empty textBox)
+
+Double Click Listed Password for Saving
+
+Password protected title
+
+
 
 **Status: Dev**
 
