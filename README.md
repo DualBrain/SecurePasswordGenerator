@@ -22,7 +22,7 @@ CTRL + H = Help
 
 CTRL + E = Exit
 
-Enter = Update form for now
+Enter = Update data (not completed Enter key)
 
 Also you can use up-down arrow in main form's listbox :)
 
