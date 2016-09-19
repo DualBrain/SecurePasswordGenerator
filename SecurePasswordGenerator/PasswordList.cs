@@ -106,10 +106,6 @@ namespace SecurePasswordGenerator
                 {
                     clickedItem = "delete";
                 }
-                else
-                {
-                    clickedItem = "update";
-                }
             }
             cntRightMenu.Visible = false;
             if (clickedItem == "delete")
