@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Core.Metadata.Edm;
 using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace SecurePasswordGenerator
         public static string rowCustomPassword;
         private int deletedRow;
         private string deletedCustomPassword;
+        private string clickedItem = "";
 
         Provider p = new Provider("psCnf.ok");
 
@@ -93,22 +95,26 @@ namespace SecurePasswordGenerator
 
                 cntRightMenu.Show(dgvPasswordList, new Point(e.X, e.Y));
                 
+                
 
             }
         }
 
         private void cntRightMenu_Click(object sender, EventArgs e)
         {
-            string clickedItem = "";
-            foreach (ToolStripMenuItem ts in cntRightMenu.Items)
-            {
-                if (ts.Text.ToLower().Contains("delete"))
-                {
-                    clickedItem = "delete";
-                }
-            }
+            
+
+            
+            
+        }
+
+        private void cntRightMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            clickedItem = e.ClickedItem.Text;
+
             cntRightMenu.Visible = false;
-            if (clickedItem == "delete")
+
+            if (clickedItem.ToLower().Contains("delete"))
             {
                 var isOk = MessageBox.Show("Are you sure for delete?", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (isOk == DialogResult.Yes)
@@ -144,7 +150,6 @@ namespace SecurePasswordGenerator
                 }
             }
             dgvPasswordList.ClearSelection();
-            
         }
         
     }

@@ -36,13 +36,13 @@
             this.password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customPassword = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpPasswordList = new System.Windows.Forms.GroupBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grpSearch = new System.Windows.Forms.GroupBox();
             this.txtSearchKeyword = new System.Windows.Forms.TextBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.cntRightMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPasswordList)).BeginInit();
             this.grpPasswordList.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.grpSearch.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvPasswordList
@@ -105,16 +105,16 @@
             this.grpPasswordList.TabStop = false;
             this.grpPasswordList.Text = "Password List";
             // 
-            // groupBox1
+            // grpSearch
             // 
-            this.groupBox1.Controls.Add(this.txtSearchKeyword);
-            this.groupBox1.Controls.Add(this.lblTitle);
-            this.groupBox1.Location = new System.Drawing.Point(13, 13);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(438, 60);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Search Title";
+            this.grpSearch.Controls.Add(this.txtSearchKeyword);
+            this.grpSearch.Controls.Add(this.lblTitle);
+            this.grpSearch.Location = new System.Drawing.Point(13, 13);
+            this.grpSearch.Name = "grpSearch";
+            this.grpSearch.Size = new System.Drawing.Size(438, 60);
+            this.grpSearch.TabIndex = 2;
+            this.grpSearch.TabStop = false;
+            this.grpSearch.Text = "Search Title";
             // 
             // txtSearchKeyword
             // 
@@ -138,15 +138,15 @@
             // cntRightMenu
             // 
             this.cntRightMenu.Name = "cntRightMenu";
-            this.cntRightMenu.Size = new System.Drawing.Size(61, 4);
-            this.cntRightMenu.Click += new System.EventHandler(this.cntRightMenu_Click);
+            this.cntRightMenu.Size = new System.Drawing.Size(153, 26);
+            this.cntRightMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.cntRightMenu_ItemClicked);
             // 
             // PasswordList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(463, 423);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.grpSearch);
             this.Controls.Add(this.grpPasswordList);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -157,8 +157,8 @@
             this.Load += new System.EventHandler(this.PasswordList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPasswordList)).EndInit();
             this.grpPasswordList.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.grpSearch.ResumeLayout(false);
+            this.grpSearch.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -166,7 +166,7 @@
 
         #endregion
         private System.Windows.Forms.GroupBox grpPasswordList;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grpSearch;
         private System.Windows.Forms.TextBox txtSearchKeyword;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
