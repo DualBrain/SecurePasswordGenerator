@@ -15,22 +15,31 @@ namespace SecurePasswordGenerator
 
         SavePassword savePassword = new SavePassword();
 
-        private void btnGenerate_Click(object sender, EventArgs e)
+       private void btnGenerate_Click(object sender, EventArgs e)
         {
-            int txtValue = (!string.IsNullOrEmpty(txtNumber.Text)) ? int.Parse(txtNumber.Text) : 16;
-            if (txtValue > 255)
+            int txtValue = 16;
+            try
             {
-                MessageBox.Show("Max 255 character!", "ERROR");
+                txtValue = (!string.IsNullOrEmpty(txtNumber.Text)) ? int.Parse(txtNumber.Text) : 16;
+
+                if (txtValue > 255)
+                {
+                    MessageBox.Show("Max 255 character!", "ERROR");
+                }
+                else
+                {
+                    string generatedPassword = PasswordClass.Generate(txtValue);
+                    lstGenerated.Items.Add(generatedPassword);
+                    lstGenerated.SetSelected(lstGenerated.Items.IndexOf(generatedPassword), true);
+                    lblOutput.ForeColor = Color.Red;
+                    lblOutput.Text = "Password Generated.\nClick Password for Automattic Copy";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                string generatedPassword = PasswordClass.Generate(txtValue);
-                lstGenerated.Items.Add(generatedPassword);
-                lstGenerated.SetSelected(lstGenerated.Items.IndexOf(generatedPassword), true);
-                lblOutput.ForeColor = Color.Red;
-                lblOutput.Text = "Password Generated.\nClick Password for Automattic Copy";
+                MessageBox.Show(ex.Message);
+                txtNumber.Text = "";
             }
-            
         }
 
         private void chkLower_CheckedChanged(object sender, EventArgs e)
