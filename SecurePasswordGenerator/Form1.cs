@@ -10,7 +10,7 @@ namespace SecurePasswordGenerator
         public Form1()
         {
             InitializeComponent();
-            
+
         }
 
         SavePassword savePassword = new SavePassword();
@@ -104,7 +104,7 @@ namespace SecurePasswordGenerator
                 lblOutput.ForeColor = Color.Red;
                 lblOutput.Text = "You're click empty area!\nPlease select password :)";
             }
-            
+
         }
 
         private void lstGenerated_DoubleClick(object sender, EventArgs e)
@@ -192,7 +192,7 @@ namespace SecurePasswordGenerator
                 {
                     chkLower.Checked = false;
                 }
-                
+
             }
             else if (e.Alt && e.KeyCode == Keys.U)
             {

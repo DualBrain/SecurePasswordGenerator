@@ -47,28 +47,35 @@ namespace SecurePasswordGenerator
 
         private void dgvPasswordList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            PasswordDetailLogin pl = new PasswordDetailLogin();
-            PasswordDetail plDetail = new PasswordDetail();
-
-            string rowCustomPassword = dgvPasswordList.Rows[e.RowIndex].Cells["CustomPassword"].Value.ToString();
-
-            rowID = int.Parse(dgvPasswordList.Rows[e.RowIndex].Cells["ID"].Value.ToString());
-            rowTitle = dgvPasswordList.Rows[e.RowIndex].Cells["title"].Value.ToString();
-            rowPassword = dgvPasswordList.Rows[e.RowIndex].Cells["Password"].Value.ToString();
-            rowCustomPassword = dgvPasswordList.Rows[e.RowIndex].Cells["CustomPassword"].Value.ToString();
-
-
-            if (rowCustomPassword != string.Empty)
+            try
             {
-                pl.ShowDialog();
+                PasswordDetailLogin pl = new PasswordDetailLogin();
+                PasswordDetail plDetail = new PasswordDetail();
+
+                string rowCustomPassword = dgvPasswordList.Rows[e.RowIndex].Cells["CustomPassword"].Value.ToString();
+
+                rowID = int.Parse(dgvPasswordList.Rows[e.RowIndex].Cells["ID"].Value.ToString());
+                rowTitle = dgvPasswordList.Rows[e.RowIndex].Cells["title"].Value.ToString();
+                rowPassword = dgvPasswordList.Rows[e.RowIndex].Cells["Password"].Value.ToString();
+                rowCustomPassword = dgvPasswordList.Rows[e.RowIndex].Cells["CustomPassword"].Value.ToString();
+
+
+                if (rowCustomPassword != string.Empty)
+                {
+                    pl.ShowDialog();
+                }
+                else
+                {
+                    PasswordDetail.rowID = rowID;
+                    plDetail.txtTitle.Text = rowTitle;
+                    plDetail.txtPassword.Text = rowPassword;
+                    plDetail.txtCustomPassword.Text = rowCustomPassword;
+                    plDetail.ShowDialog();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                PasswordDetail.rowID = rowID;
-                plDetail.txtTitle.Text = rowTitle;
-                plDetail.txtPassword.Text = rowPassword;
-                plDetail.txtCustomPassword.Text = rowCustomPassword;
-                plDetail.ShowDialog();
+                dgvPasswordList.ClearSelection();
             }
             
         }
