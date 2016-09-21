@@ -89,21 +89,27 @@ namespace SecurePasswordGenerator
 
         private void dgvPasswordList_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            try
             {
-                cntRightMenu.Items.Clear();
-                cntRightMenu.Items.Add("Delete").Tag = "Delete";
-                cntRightMenu.Items.Add("Update Password").Tag = "Update";
-                dgvPasswordList.ClearSelection();
-                dgvPasswordList.Rows[dgvPasswordList.HitTest(e.X, e.Y).RowIndex].Selected = true;
+                if (e.Button == MouseButtons.Right)
+                {
+                    cntRightMenu.Items.Clear();
+                    cntRightMenu.Items.Add("Delete").Tag = "Delete";
+                    cntRightMenu.Items.Add("Update Password").Tag = "Update";
+                    dgvPasswordList.ClearSelection();
+                    dgvPasswordList.Rows[dgvPasswordList.HitTest(e.X, e.Y).RowIndex].Selected = true;
 
-                deletedRow = int.Parse(dgvPasswordList.Rows[dgvPasswordList.HitTest(e.X, e.Y).RowIndex].Cells["ID"].Value.ToString());
-                deletedCustomPassword = dgvPasswordList.Rows[dgvPasswordList.HitTest(e.X, e.Y).RowIndex].Cells["CustomPassword"].Value.ToString();
+                    deletedRow = int.Parse(dgvPasswordList.Rows[dgvPasswordList.HitTest(e.X, e.Y).RowIndex].Cells["ID"].Value.ToString());
+                    deletedCustomPassword = dgvPasswordList.Rows[dgvPasswordList.HitTest(e.X, e.Y).RowIndex].Cells["CustomPassword"].Value.ToString();
 
-                cntRightMenu.Show(dgvPasswordList, new Point(e.X, e.Y));
+                    cntRightMenu.Show(dgvPasswordList, new Point(e.X, e.Y));
                 
                 
 
+                }
+            }
+            catch
+            {
             }
         }
 
