@@ -2,6 +2,32 @@
 
 Secure Random Password Generator &amp; Password Manager
 
+# Screenshots
+
+**Main Screen**
+
+![images/main.PNG](images/main.PNG)
+
+**Password List**
+
+![images/main.PNG](images/passlist.PNG)
+
+**Password Saving**
+
+![images/protect.PNG](images/protect.PNG)
+
+**Password Update**
+
+![images/updatePassword.PNG](images/updatePassword.PNG)
+
+**Password Protected List**
+
+![images/protectPass.PNG](images/protectPass.PNG)
+
+**Right Click on Password List**
+
+![images/rightClick.PNG](images/rightClick.PNG)
+
 # Keyboard Shortcuts ( Not Completed )
 
 CTRL + G = Generate random password
@@ -35,8 +61,6 @@ Default password long = 16 (for empty textBox)
 Double Click Listed Password for Saving
 
 Password protected title
-
-
 
 **Status: Dev**
 
