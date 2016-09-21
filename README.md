@@ -2,6 +2,8 @@
 
 Secure Random Password Generator &amp; Password Manager
 
+Keyboard shortcut supported :) [#keyboard-shortcuts--not-completed-](See the shortcut list)
+
 # Screenshots
 
 **Main Screen**
