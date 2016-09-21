@@ -2,7 +2,7 @@
 
 Secure Random Password Generator &amp; Password Manager
 
-Keyboard shortcut supported :) [#keyboard-shortcuts--not-completed-](See the shortcut list)
+Keyboard shortcut supported :) [See the shortcut list](#keyboard-shortcuts--not-completed-)
 
 # Screenshots
 
