@@ -20,7 +20,7 @@ namespace SecurePasswordGenerator
             string lowerChars = "abcdefghijklmnopqrstuvwxyz";
             string upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             string numeric = "0123456789";
-            string special = "!'@#^$+½%&{/[(])}=\\?|_-";
+            string special = "!'@#^$+½%&{/[(])}=\\?|_-*:";
 
             Random random = new Random();
             StringBuilder result = new StringBuilder(length);
