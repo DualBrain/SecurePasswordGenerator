@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
+using System;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace SecurePasswordGenerator
 {
+    /// <summary>
+    /// Class to generate random passwords.
+    /// </summary>
     public class PasswordClass
     {
 
@@ -15,6 +14,11 @@ namespace SecurePasswordGenerator
         public static bool useNumeric;
         public static bool useSpecial;
 
+        /// <summary>
+        /// Static function to generate the password.
+        /// </summary>
+        /// <param name="length"> Length of characters want in password </param>
+        /// <returns></returns>
         public static string Generate(int length = 16)
         {
             string lowerChars = "abcdefghijklmnopqrstuvwxyz";
