@@ -1,14 +1,16 @@
 using System;
 using System.Text;
+using System.Security.Cryptography;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SecurePasswordGenerator
 {
     /// <summary>
     /// Class to generate random passwords.
     /// </summary>
-    public class PasswordClass
+    public static class PasswordClass
     {
-
         public static bool useLower;
         public static bool useUpper;
         public static bool useNumeric;
@@ -17,47 +19,57 @@ namespace SecurePasswordGenerator
         /// <summary>
         /// Static function to generate the password.
         /// </summary>
-        /// <param name="length"> Length of characters want in password </param>
+        /// <param name="length">Length of characters want in password.</param>
         /// <returns></returns>
         public static string Generate(int length = 16)
         {
-            string lowerChars = "abcdefghijklmnopqrstuvwxyz";
-            string upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            string numeric = "0123456789";
-            string special = "!'@#^$+½%&{/[(])}=\\?|_-*:";
-
-            Random random = new Random();
-            StringBuilder result = new StringBuilder(length);
-            for (int i = 0; i < length; i++)
+            const string lowerChars = "abcdefghijklmnopqrstuvwxyz";
+            const string upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            const string numeric = "0123456789";
+            const string special = "!'@#^$+½%&{/[(])}=\\?|_-*:";
+            var sb = new StringBuilder();
+            if (useLower)
+                sb.Append(lowerChars);
+            if (useUpper)
+                sb.Append(upperChars);
+            if (useNumeric)
+                sb.Append(numeric);
+            if (useSpecial)
+                sb.Append(special);
+            if (!useLower && !useUpper && !useNumeric && !useSpecial)
             {
-                if (useLower)
-                {
-                    result.Append(lowerChars[random.Next(lowerChars.Length)]);
-                }
-                if (useUpper)
-                {
-                    result.Append(upperChars[random.Next(upperChars.Length)]);
-                }
-                if (useNumeric)
-                {
-                    result.Append(numeric[random.Next(numeric.Length)]);
-                }
-                if (useSpecial)
-                {
-                    result.Append(special[random.Next(special.Length)]);
-                }
-                if (!useLower && !useUpper && !useNumeric && !useSpecial)
-                {
-                    result.Append(lowerChars[random.Next(lowerChars.Length)]);
-                    result.Append(upperChars[random.Next(upperChars.Length)]);
-                    result.Append(numeric[random.Next(numeric.Length)]);
-                    result.Append(special[random.Next(special.Length)]);
-                }
+                sb.Append(lowerChars);
+                sb.Append(upperChars);
+                sb.Append(numeric);
+                sb.Append(special);
             }
-            return result.ToString().Substring(0, length);
-            
+            return GetRandomString(length, sb.ToString());
         }
-    }
-
-    
+        
+        private static string GetRandomString(int length, IEnumerable<char> characterSet)
+        {
+            if (length <= 0)
+			    throw new ArgumentException("Length must be bigger than zero", nameof(length));
+		    if (length > int.MaxValue / 8)
+			    throw new ArgumentException("Length is too big", nameof(length));
+		    if (characterSet == null)
+			    throw new ArgumentNullException(nameof(characterSet));
+		    var characterArray = characterSet.Distinct().ToArray();
+		    if (characterArray.Length == 0)
+			    throw new ArgumentException("Set of characters must not be empty", nameof(characterSet));
+            
+            var bytes = new byte[length * 8];
+            using (var rng = new RNGCryptoServiceProvider())
+                rng.GetNonZeroBytes(bytes);
+            
+            var sb = new StringBuilder(length);
+            for (var i = 0; i < length; i++)
+            {
+                var index = BitConverter.ToUInt64(bytes, i * 8) % (ulong)characterArray.Length;
+                sb.Append(characterArray[index]);
+            }
+            
+            return sb.ToString();
+        }
+    }    
 }
